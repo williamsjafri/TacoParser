@@ -40,31 +40,32 @@ namespace LoggingKata
             ITrackable FirstTB = null;
             ITrackable SecondTB = null;
             // Create a `double` variable to store the distance
-            double distance;
+            
             double longestDistance = 0;
 
             // Include the Geolocation toolbox, so you can compare locations: `using GeoCoordinatePortable;`
 
             //HINT NESTED LOOPS SECTION---------------------
             // Do a loop for your locations to grab each location as the origin (perhaps: `locA`)
-            
+            var Coord1 = new GeoCoordinate();
+            var Coord2 = new GeoCoordinate();
             foreach (var item in locations)
             {
                 
-                var Coord1 = new GeoCoordinate();
+                
                 Coord1.Latitude = item.Location.Latitude;
                 Coord1.Longitude = item.Location.Longitude;
                 foreach (var items in locations)
                 {
                     
-                    var Coord2 = new GeoCoordinate();
+                    
                     Coord2.Latitude = items.Location.Latitude;
-                    Coord2.Longitude = items.Location.Latitude;
+                    Coord2.Longitude = items.Location.Longitude;
 
-                    distance = Coord1.GetDistanceTo(Coord2);
-                    if (distance>longestDistance)
+                    
+                    if (Coord1.GetDistanceTo(Coord2) >longestDistance)
                     {
-                        longestDistance = distance;
+                        longestDistance = Coord1.GetDistanceTo(Coord2);
                         FirstTB = item;
                         SecondTB = items;
                     }
